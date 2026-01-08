@@ -12,18 +12,34 @@ import SwiftData
 struct BucketListView: View {
     
     @Environment(\.modelContext) var modelContext
+    @Query var goals: [Goal]
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(goals) { goal in
+                    Text(goal.title)
+                        .font(.title2)
+                }
+            }
+            .navigationTitle("Bucket List:")
+            .listStyle(.plain)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        //TODO: confirmationAction
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title)
+                    }
+
+                }
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
     BucketListView()
+        .modelContainer(Goal.preview)
 }
