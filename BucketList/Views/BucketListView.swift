@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  BucketListView.swift
 //  BucketList
 //
 //  Created by app-kaihatsusha on 08/01/2026.
@@ -7,8 +7,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct ContentView: View {
+struct BucketListView: View {
+    
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -21,5 +25,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    BucketListView()
 }
